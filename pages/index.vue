@@ -1,9 +1,5 @@
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  setup() {},
-});
+<script lang="ts" setup>
+const appConfig = useAppConfig();
 </script>
 
 <template>
