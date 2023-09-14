@@ -1,7 +1,10 @@
 <template>
-  <div class="layout-default">
+  <div class="layout-default w-full h-full">
     <nuxt-page></nuxt-page>
   </div>
 </template>
 
-<style></style>
+<style lang="scss">
+.layout-default {
+}
+</style>

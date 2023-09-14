@@ -7,4 +7,13 @@ export default defineNuxtConfig({
   quasar: {
     /* */
   },
+
+  css: ["~/assets/style/main.scss"],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });
