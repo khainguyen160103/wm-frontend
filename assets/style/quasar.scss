@@ -1,0 +1,15 @@
+.q-form {
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #5c5f62;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.q-field {
+  height: 32px;
+  &__control {
+    height: 32px;
+  }
+}
