@@ -9,8 +9,13 @@ definePageMeta({
     class="login-page w-full h-full flex flex-col items-center justify-center"
   >
     <q-form class="form-login">
-      <q-input placeholder="Username" outlined></q-input>
-      <q-input placeholder="Email Address" outlined></q-input>
+      <div class="flex flex-col">
+        <h4>Sign in to your account</h4>
+        <p>Enter your email & password to login</p>
+      </div>
+      <q-input placeholder="Username" outlined class="mt-4"></q-input>
+      <q-input placeholder="Email Address" outlined class="mt-4"></q-input>
+      <q-btn color="primary" label="LOGIN" class="mt-4" />
     </q-form>
   </div>
 </template>
@@ -18,8 +23,8 @@ definePageMeta({
 <style lang="scss" scoped>
 .login-page {
   .form-login {
-    min-width: 50%;
-    max-width: calc(100vw - 200px);
+    width: 450px;
+    box-shadow: 0 0 37px #0815420d;
   }
 }
 </style>
