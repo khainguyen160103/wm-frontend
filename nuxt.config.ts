@@ -1,6 +1,20 @@
+import { createResolver } from "@nuxt/kit";
+const { resolve } = createResolver(import.meta.url);
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  components: ["~/components/"],
+  components: [
+    {
+      prefix: "Layout",
+      path: resolve("./components/layout"),
+      global: true,
+    },
+    {
+      prefix: "Global",
+      path: resolve("./components/global"),
+      global: true,
+    },
+  ],
 
   devtools: { enabled: true },
 
