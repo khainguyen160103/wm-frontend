@@ -18,13 +18,9 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ["nuxt-quasar-ui"],
+  modules: ["maz-ui/nuxt"],
 
-  quasar: {
-    /* */
-  },
-
-  css: ["~/assets/style/main.scss", "~/assets/style/quasar.scss"],
+  css: ["~/assets/style/main.scss", "~/assets/style/maz.scss"],
 
   postcss: {
     plugins: {
