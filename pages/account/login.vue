@@ -1,4 +1,7 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from "vue";
+import type { FormError, FormSubmitEvent } from "@nuxt/ui/dist/runtime/types";
+
 definePageMeta({
   layout: "empty",
   name: "WM Login",
@@ -9,23 +12,35 @@ useHead({
 });
 
 // data
-let isPwd = ref(true);
 const account = ref({
   mail: null,
   password: null,
 });
 
 // method
-const showPassword = () => {
-  isPwd = !isPwd;
+const validate = (state: any): FormError[] => {
+  const errors = [];
+  if (!state.email) errors.push({ path: "email", message: "Required" });
+  if (!state.password) errors.push({ path: "password", message: "Required" });
+  return errors;
 };
+
+async function submit(event: FormSubmitEvent<any>) {
+  // Do something with data
+  console.log(event.data);
+}
 </script>
 
 <template>
   <div
     class="login-page w-full h-full flex flex-col items-center justify-center"
   >
-    <form class="form-login">
+    <UForm
+      :validate="validate"
+      :state="account"
+      @submit="submit"
+      class="form-login"
+    >
       <div class="flex flex-col">
         <h4>Sign in to your account</h4>
         <p class="text-light-grey font-medium">
@@ -33,17 +48,16 @@ const showPassword = () => {
         </p>
       </div>
 
-      <MazInput v-model="account.email" label="Email" class="mt-4" />
+      <UFormGroup label="Email" name="email" class="mt-4">
+        <UInput v-model="account.email" />
+      </UFormGroup>
 
-      <MazInput
-        v-model="account.password"
-        label="Password"
-        type="password"
-        class="mt-4"
-      />
+      <UFormGroup label="Password" name="password" class="mt-4">
+        <UInput v-model="account.password" type="password" />
+      </UFormGroup>
 
-      <MazBtn color="primary" class="mt-4 uppercase w-full">LOGIN</MazBtn>
-    </form>
+      <UButton type="submit" class="w-full mt-4 text-center"> Submit </UButton>
+    </UForm>
   </div>
 </template>
 

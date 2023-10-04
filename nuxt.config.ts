@@ -1,24 +1,32 @@
-import { createResolver } from "@nuxt/kit";
-const { resolve } = createResolver(import.meta.url);
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   components: [
     {
       prefix: "Layout",
-      path: resolve("./components/layout"),
+      path: "~/components/layout",
       global: true,
     },
     {
       prefix: "Global",
-      path: resolve("./components/global"),
+      path: "~/components/global",
       global: true,
     },
   ],
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
-  modules: ["maz-ui/nuxt"],
+  colorMode: {
+    preference: "system", // default value of $colorMode.preference
+    fallback: "light", // fallback value if not system preference found
+    hid: "nuxt-color-mode-script",
+    globalName: "__NUXT_COLOR_MODE__",
+    componentName: "ColorScheme",
+    classPrefix: "",
+    classSuffix: "-mode",
+    storageKey: "nuxt-color-mode",
+  },
+
+  modules: ["@nuxt/ui"],
 
   css: ["~/assets/style/main.scss", "~/assets/style/maz.scss"],
 

@@ -17,6 +17,11 @@ body {
   }
 }
 
+// disable dark mode
+.dark {
+  color-scheme: light !important;
+}
+
 h4 {
   font-size: 24px;
   font-weight: 600;

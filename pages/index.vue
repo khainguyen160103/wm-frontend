@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig();
+
+useHead({
+  title: "Work Management",
+});
 </script>
 
 <template>
-  <div>
-    Index page
-    <maz-btn>Button</maz-btn>
-
-    <maz-avatar src="https://cdn.quasar.dev/img/avatar.png" />
-  </div>
+  <div>Index page</div>
 </template>
