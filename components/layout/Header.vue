@@ -13,8 +13,7 @@
     <GlobalLogo />
 
     <div class="layout-header__action flex items-center gap-2">
-      <UButton icon="i-heroicons-bell" color="primary" square variant="ghost" />
-
+      <q-btn icon="eva-bell-outline" flat round></q-btn>
       <GlobalAvatar />
     </div>
   </div>

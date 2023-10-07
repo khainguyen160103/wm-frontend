@@ -9,28 +9,30 @@
 const sidebarItems = ref([
   {
     name: "Tài khoản",
-    icon: "i-heroicons-user-group",
+    icon: "eva-people-outline",
     path: "account",
   },
   {
     name: "Dự án",
-    icon: "i-heroicons-briefcase",
+    icon: "eva-grid-outline",
     path: "project",
   },
   {
     name: "Danh mục",
-    icon: "i-heroicons-queue-list",
+    icon: "eva-list-outline",
     path: "category",
   },
 ]);
 </script>
 
 <template>
-  <div class="layout-sidebar flex flex-col border-r border-grey p-2">
-    <LayoutSidebarItem
-      v-for="sidebarItem in sidebarItems"
-      :key="sidebarItem.name"
-      :item="sidebarItem"
-    ></LayoutSidebarItem>
+  <div class="layout-sidebar flex flex-col border-r p-2">
+    <q-list dense padding class="rounded-borders">
+      <LayoutSidebarItem
+        v-for="sidebarItem in sidebarItems"
+        :key="sidebarItem.name"
+        :item="sidebarItem"
+      />
+    </q-list>
   </div>
 </template>

@@ -15,7 +15,8 @@
   .page {
     height: calc(100vh - 54px);
     width: calc(100vw - 260px);
-    padding: 0px 16px;
+    padding: 16px;
+    overflow: auto;
   }
 }
 </style>

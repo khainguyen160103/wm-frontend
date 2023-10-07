@@ -11,15 +11,22 @@ export default defineNuxtConfig({
       path: "~/components/global",
       global: true,
     },
+    {
+      prefix: "Project",
+      path: "~/components/project",
+      global: true,
+    },
   ],
 
   devtools: { enabled: false },
 
-  colorMode: {
-    preference: "light",
-  },
+  modules: ["nuxt-quasar-ui"],
 
-  modules: ["@nuxt/ui"],
+  quasar: {
+    extras: {
+      fontIcons: ["eva-icons"],
+    },
+  },
 
   css: ["~/assets/style/main.scss"],
 

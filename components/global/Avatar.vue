@@ -8,23 +8,40 @@ const account = ref({
 </script>
 
 <template>
-  <UPopover>
-    <UAvatar :src="account.avatar" :alt="account.name" />
-    <template #panel>
-      <div>
-        <div
-          class="sidebar-item w-full flex items-center gap-2 cursor-pointer py-2 px-4 hover:bg-gray-100 hover:text-primary-blue rounded-lg duration-150"
+  <div class="">
+    <q-avatar size="36px" class="cursor-pointer">
+      <img :src="account.avatar" />
+    </q-avatar>
+
+    <q-menu
+      touch-position
+      anchor="bottom end"
+      transition-show="jump-down"
+      transition-hide="jump-up"
+    >
+      <q-list style="min-width: 120px">
+        <q-item clickable v-close-popup style="width: 180px">
+          <q-item-section>
+            <div class="flex items-center gap-2">
+              <q-icon name="eva-person-outline"></q-icon>
+              <span>Thông tin cá nhân</span>
+            </div>
+          </q-item-section>
+        </q-item>
+        <q-item
+          clickable
+          v-close-popup
+          style="width: 180px"
+          to="/account/login"
         >
-          <UIcon name="i-heroicons-user" />
-          <span>Thông tin</span>
-        </div>
-        <div
-          class="sidebar-item w-full flex items-center gap-2 cursor-pointer py-2 px-4 hover:bg-gray-100 hover:text-primary-blue rounded-lg duration-150"
-        >
-          <UIcon name="i-heroicons-arrow-left-on-rectangle" />
-          <span> Đăng xuất </span>
-        </div>
-      </div>
-    </template>
-  </UPopover>
+          <q-item-section class="hover:text-red-400 duration-100">
+            <div class="flex items-center gap-2">
+              <q-icon name="eva-log-out-outline"></q-icon>
+              <span>Đăng xuất</span>
+            </div>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-menu>
+  </div>
 </template>

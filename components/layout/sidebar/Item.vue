@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
 .sidebar-item {
-  height: 40px;
+  height: 48px;
 }
 </style>
 
@@ -24,14 +24,18 @@ const isActive = computed(() => {
 </script>
 
 <template>
-  <NuxtLink
-    class="sidebar-item w-full flex items-center gap-2 cursor-pointer py-2 px-4 hover:bg-gray-100 hover:text-primary-blue rounded-lg duration-150"
-    :class="{ ' text-primary-blue bg-gray-100': isActive }"
-    :to="`/${item.path}`"
+  <q-item
+    clickable
+    v-ripple
+    class="rounded-lg sidebar-item"
+    :active="isActive"
+    :to="item.path"
   >
-    <UIcon :name="item.icon" />
-    <span>
-      {{ item.name }}
-    </span>
-  </NuxtLink>
+    <q-item-section>
+      <div class="flex items-center gap-2 text-base">
+        <q-icon :name="item.icon"></q-icon>
+        <span>{{ item.name }}</span>
+      </div>
+    </q-item-section>
+  </q-item>
 </template>
