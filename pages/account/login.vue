@@ -35,7 +35,7 @@ async function submit(event: FormSubmitEvent<any>) {
   <div
     class="login-page w-full h-full flex flex-col items-center justify-center"
   >
-    <UForm
+    <q-form
       :validate="validate"
       :state="account"
       @submit="submit"
@@ -43,21 +43,12 @@ async function submit(event: FormSubmitEvent<any>) {
     >
       <div class="flex flex-col">
         <h4>Sign in to your account</h4>
-        <p class="text-light-grey font-medium">
-          Enter your email & password to login
-        </p>
+        <p>Enter your email & password to login</p>
       </div>
-
-      <UFormGroup label="Email" name="email" class="mt-4">
-        <UInput v-model="account.email" />
-      </UFormGroup>
-
-      <UFormGroup label="Password" name="password" class="mt-4">
-        <UInput v-model="account.password" type="password" />
-      </UFormGroup>
-
-      <UButton type="submit" class="w-full mt-4 text-center"> Submit </UButton>
-    </UForm>
+      <q-input placeholder="Username" outlined class="mt-4"></q-input>
+      <q-input placeholder="Email Address" outlined class="mt-4"></q-input>
+      <q-btn color="primary" label="LOGIN" class="mt-4" />
+    </q-form>
   </div>
 </template>
 

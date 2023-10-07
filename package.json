@@ -19,6 +19,7 @@
     "tailwindcss": "^3.3.3"
   },
   "dependencies": {
-    "@nuxt/ui": "^2.9.0"
+    "@quasar/extras": "^1.16.6",
+    "quasar": "^2.12.6"
   }
 }
