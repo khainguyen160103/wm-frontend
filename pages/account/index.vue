@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+useHead({
+  title: "Quản lý tài khoản",
+});
+
 const people = [
   {
     id: 1,
@@ -68,5 +72,7 @@ const columns = [
 </script>
 
 <template>
-  <div><UTable :rows="people" :columns="columns" /></div>
+  <div class="account-page">
+    <div><UTable :rows="people" :columns="columns" /></div>
+  </div>
 </template>

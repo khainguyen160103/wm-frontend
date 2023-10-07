@@ -16,6 +16,10 @@ module.exports = {
         grey: "#C5C5C5",
         "light-grey": "#898989",
         "dark-grey": "#5C5F62",
+        "primary-blue": "#0ea5e9",
+      },
+      textColor: {
+        "primary-blue": "#0ea5e9",
       },
     },
   },

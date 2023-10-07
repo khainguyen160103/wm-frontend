@@ -21,7 +21,7 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/ui"],
 
-  css: ["~/assets/style/main.scss", "~/assets/style/maz.scss"],
+  css: ["~/assets/style/main.scss"],
 
   postcss: {
     plugins: {
