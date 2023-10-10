@@ -18,9 +18,12 @@ const account = ref({
 </script>
 
 <template>
-  <div
-    class="login-page w-full h-full flex flex-col items-center justify-center"
-  >
+  <div class="login-page w-full h-full flex items-center justify-center">
+    <img
+      src="https://i.pinimg.com/736x/27/1f/5b/271f5bc215da9fcf28b519c513b4a91e.jpg"
+      alt=""
+    />
+
     <q-form
       :validate="validate"
       :state="account"
