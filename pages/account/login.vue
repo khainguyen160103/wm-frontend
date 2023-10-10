@@ -20,7 +20,7 @@ const account = ref({
 <template>
   <div class="login-page w-full h-full flex items-center justify-center">
     <img
-      src="https://i.pinimg.com/736x/27/1f/5b/271f5bc215da9fcf28b519c513b4a91e.jpg"
+      src="https://media.istockphoto.com/id/1308949444/vector/business-meeting-illustration.jpg?s=612x612&w=0&k=20&c=3fEk-l6DdPP9ivUj59zHEb8Um-Hv85Zt-ExSz546DAo="
       alt=""
     />
 
@@ -31,12 +31,12 @@ const account = ref({
       class="form-login border rounded-lg"
     >
       <div class="flex flex-col">
-        <h4>Sign in to your account</h4>
-        <p>Enter your email & password to login</p>
+        <h4>Đăng nhập</h4>
+        <p>Hãy nhập email và mật khẩu để đăng nhập</p>
       </div>
-      <q-input placeholder="Username" outlined class="mt-4"></q-input>
-      <q-input placeholder="Email Address" outlined class="mt-4"></q-input>
-      <q-btn color="primary" label="LOGIN" class="mt-4 w-full" />
+      <q-input placeholder="Email" outlined class="mt-4"></q-input>
+      <q-input placeholder="Mật khẩu" outlined class="mt-4"></q-input>
+      <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" />
     </q-form>
   </div>
 </template>
