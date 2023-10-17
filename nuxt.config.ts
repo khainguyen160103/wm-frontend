@@ -16,6 +16,11 @@ export default defineNuxtConfig({
       path: "~/components/project",
       global: true,
     },
+    {
+      prefix: "Account",
+      path: "~/components/account",
+      global: true,
+    },
   ],
 
   devtools: { enabled: false },
