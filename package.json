@@ -12,6 +12,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@quasar/vite-plugin": "^1.5.0",
+    "@sidebase/nuxt-auth": "^0.6.0-rc.0",
     "@typescript-eslint/eslint-plugin": "^6.8.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.52.0",

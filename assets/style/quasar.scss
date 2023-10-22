@@ -1,3 +1,11 @@
+::root {
+  --q-primary-hover: #f1f0fd;
+}
+
+body {
+  --q-primary: #7366ff;
+}
+
 .q-form {
   padding: 40px;
   border-radius: 8px;
@@ -18,5 +26,17 @@
 .q-btn {
   &.bg-primary {
     background: #7366ff !important;
+  }
+}
+
+.q-item {
+  &.q-router-link--active {
+    color: var(--q-primary);
+    background-color: var(--q-primary-hover);
+  }
+
+  &--active {
+    color: var(--q-primary);
+    background-color: var(--q-primary-hover);
   }
 }

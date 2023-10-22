@@ -2,23 +2,23 @@
 export default defineNuxtConfig({
   components: [
     {
-      prefix: "Layout",
-      path: "~/components/layout",
+      prefix: 'Layout',
+      path: '~/components/layout',
       global: true,
     },
     {
-      prefix: "Global",
-      path: "~/components/global",
+      prefix: 'Global',
+      path: '~/components/global',
       global: true,
     },
     {
-      prefix: "Project",
-      path: "~/components/project",
+      prefix: 'Project',
+      path: '~/components/project',
       global: true,
     },
     {
-      prefix: "Account",
-      path: "~/components/account",
+      prefix: 'Account',
+      path: '~/components/account',
       global: true,
     },
   ],
@@ -31,15 +31,15 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: ["nuxt-quasar-ui"],
+  modules: ['nuxt-quasar-ui'],
 
   quasar: {
     extras: {
-      fontIcons: ["eva-icons"],
+      fontIcons: ['eva-icons'],
     },
   },
 
-  css: ["~/assets/style/main.scss"],
+  css: ['~/assets/style/main.scss', '~/assets/style/quasar.scss'],
 
   postcss: {
     plugins: {
@@ -47,4 +47,4 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-});
+})
