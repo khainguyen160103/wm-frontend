@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+const { $api } = useNuxtApp();
 
 definePageMeta({
   layout: "empty",
@@ -15,6 +16,18 @@ const account = ref({
   mail: null,
   password: null,
 });
+
+// methods
+const handleLogin = async () => {
+  console.log("handleLogin: ", account);
+  try {
+    const response = await $api.auth.login(account);
+    console.log(response);
+    // allow user access into the app
+  } catch (error) {
+    console.error(error);
+  }
+};
 </script>
 
 <template>
@@ -24,19 +37,37 @@ const account = ref({
       alt=""
     />
 
+    <!-- :validate="validate" -->
     <q-form
-      :validate="validate"
       :state="account"
-      @submit="submit"
+      @submit="handleLogin"
       class="form-login border rounded-lg"
     >
       <div class="flex flex-col">
         <h4>Đăng nhập</h4>
         <p>Hãy nhập email và mật khẩu để đăng nhập</p>
       </div>
-      <q-input placeholder="Email" outlined class="mt-4"></q-input>
-      <q-input placeholder="Mật khẩu" outlined class="mt-4"></q-input>
-      <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" />
+
+      <q-input
+        v-model="account.email"
+        placeholder="Email"
+        outlined
+        class="mt-4"
+      ></q-input>
+
+      <q-input
+        v-model="account.password"
+        placeholder="Mật khẩu"
+        outlined
+        class="mt-4"
+      ></q-input>
+
+      <q-btn
+        color="primary"
+        label="ĐĂNG NHẬP"
+        class="mt-4 w-full"
+        @click="handleLogin"
+      />
     </q-form>
   </div>
 </template>
