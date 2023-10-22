@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { ref } from "vue";
-const { $api } = useNuxtApp();
+import { ref } from 'vue'
+const { $api } = useNuxtApp()
 
 definePageMeta({
-  layout: "empty",
-  name: "WM Login",
-});
+  layout: 'empty',
+  name: 'WM Login',
+})
 
 useHead({
-  title: "WM Login",
-});
+  title: 'WM Login',
+})
 
 // data
-const account = ref({
-  mail: null,
+const account = reactive({
+  email: null,
   password: null,
-});
+})
 
 // methods
 const handleLogin = async () => {
-  console.log("handleLogin: ", account);
+  console.log('handleLogin: ', account)
   try {
-    const response = await $api.auth.login(account);
-    console.log(response);
+    const response = await $api.auth.login(account)
+    console.log(response)
     // allow user access into the app
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
-};
+}
 </script>
 
 <template>
@@ -38,36 +38,17 @@ const handleLogin = async () => {
     />
 
     <!-- :validate="validate" -->
-    <q-form
-      :state="account"
-      @submit="handleLogin"
-      class="form-login border rounded-lg"
-    >
+    <q-form :state="account" @submit="handleLogin" class="form-login border rounded-lg">
       <div class="flex flex-col">
         <h4>Đăng nhập</h4>
         <p>Hãy nhập email và mật khẩu để đăng nhập</p>
       </div>
 
-      <q-input
-        v-model="account.email"
-        placeholder="Email"
-        outlined
-        class="mt-4"
-      ></q-input>
+      <q-input v-model="account.email" placeholder="Email" outlined class="mt-4"></q-input>
 
-      <q-input
-        v-model="account.password"
-        placeholder="Mật khẩu"
-        outlined
-        class="mt-4"
-      ></q-input>
+      <q-input v-model="account.password" placeholder="Mật khẩu" outlined class="mt-4"></q-input>
 
-      <q-btn
-        color="primary"
-        label="ĐĂNG NHẬP"
-        class="mt-4 w-full"
-        @click="handleLogin"
-      />
+      <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" @click="handleLogin" />
     </q-form>
   </div>
 </template>

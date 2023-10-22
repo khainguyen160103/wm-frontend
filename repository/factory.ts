@@ -16,8 +16,9 @@ class HttpFactory {
   async call<T>(method: HttpMethod, url: string, data?: object, extras = {}): Promise<T> {
     if (method === 'POST') {
       if (!data) data = {}
+      console.log('before transform: ', data)
       data = JSON.stringify(data) as any
-      console.log(data)
+      console.log('after transform: ', data)
       console.log(typeof data)
     }
     const $res: T = await this.$fetch(url, { method, body: data, ...extras })

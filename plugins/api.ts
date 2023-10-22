@@ -10,6 +10,7 @@ interface IApiInstance {
 export default defineNuxtPlugin((nuxtApp) => {
   const fetchOptions: FetchOptions = {
     baseURL: nuxtApp.$config.public.API_BASE_URL as string,
+    headers: {},
   }
 
   /** create a new instance of $fetcher with custom option */
