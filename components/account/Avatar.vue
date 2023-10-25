@@ -22,11 +22,16 @@ const twoFirstLetter = computed(() => {
 </script>
 
 <template>
-  <div class="account-avatar" :style="`width: ${size}px; height: ${size}px`">
-    <q-avatar :size="size + 'px'" :color="color" text-color="white" rounded font-size="18">
+  <q-avatar
+    class="account-avatar select-none"
+    :size="size + 'px'"
+    text-color="white"
+    font-size="18"
+    :style="`background-color: ${color}`"
+  >
+    <template v-slot:default>
       <img v-if="src" :src="src" :alt="name" />
-      {{ twoFirstLetter }}
-      <!-- <template v-else>{{ twoFirstLetter }}</template> -->
-    </q-avatar>
-  </div>
+      <template v-else>{{ twoFirstLetter }}</template>
+    </template>
+  </q-avatar>
 </template>
