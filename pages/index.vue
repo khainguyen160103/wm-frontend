@@ -1,9 +1,13 @@
 <script lang="ts" setup>
-const appConfig = useAppConfig();
+const appConfig = useAppConfig()
 
 useHead({
-  title: "Work Management",
-});
+  title: 'Work Management',
+})
+
+definePageMeta({
+  middleware: ['auth'],
+})
 </script>
 
 <template>

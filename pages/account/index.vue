@@ -1,176 +1,115 @@
 <script lang="ts" setup>
-useHead({
-  title: "Quản lý tài khoản",
-});
+const { $api } = useNuxtApp()
 
+definePageMeta({
+  middleware: ['auth'],
+})
+
+useHead({
+  title: 'Quản lý tài khoản',
+})
+
+// constants
 const columns = [
   {
-    name: "index",
-    label: "STT",
-    field: "index",
+    name: 'index',
+    label: 'ID',
+    field: 'id',
   },
   {
-    name: "name",
+    name: 'name',
     required: true,
-    label: "Tên tài khoản",
-    align: "left",
+    label: 'Tên tài khoản',
+    align: 'left',
     field: (row: any) => row.name,
   },
   {
-    name: "email",
-    align: "left",
-    label: "Email",
-    field: "email",
+    name: 'email',
+    align: 'left',
+    label: 'Email',
+    field: 'email',
   },
-  { name: "role", label: "Vai trò (g)", field: "role", sortable: true },
+  { name: 'permissions', label: 'Vai trò', field: 'permission' },
   {
-    name: "updated_at",
-    label: "Ngày cập nhật",
-    field: "updated_at",
+    name: 'updated_at',
+    label: 'Ngày cập nhật',
+    field: 'updated_at',
   },
   {
-    name: "action",
-    label: "",
-    field: "iron",
+    name: 'action',
+    label: '',
+    field: 'iron',
   },
-];
+]
+const permissions = [
+  {
+    id: 1,
+    name: 'Quản trị viên',
+  },
+  {
+    id: 2,
+    name: 'Người quản lý',
+  },
+  {
+    id: 3,
+    name: 'Trưởng nhóm',
+  },
+  {
+    id: 4,
+    name: 'Thành viên',
+  },
+]
 
-const rows: any = [
-  {
-    name: "Dai Cox",
-    email: "lorem.donec@google.ca",
-    role: "Người quản lý",
-    updated_at: "Sep 4, 2023",
-  },
-  {
-    name: "Ainsley Dejesus",
-    email: "sagittis.nullam@hotmail.net",
-    role: "Trưởng nhóm",
-    updated_at: "May 16, 2024",
-  },
-  {
-    name: "Thane Holman",
-    email: "aliquet.proin.velit@outlook.com",
-    role: "Trưởng nhóm",
-    updated_at: "Apr 9, 2023",
-  },
-  {
-    name: "Tyler Doyle",
-    email: "diam.sed@hotmail.ca",
-    role: "Người quản lý",
-    updated_at: "Oct 30, 2023",
-  },
-  {
-    name: "Lamar Delacruz",
-    email: "a.ultricies@protonmail.couk",
-    role: "Trưởng nhóm",
-    updated_at: "Aug 11, 2023",
-  },
-  {
-    name: "Dai Cox",
-    email: "lorem.donec@google.ca",
-    role: "Người quản lý",
-    updated_at: "Sep 4, 2023",
-  },
-  {
-    name: "Ainsley Dejesus",
-    email: "sagittis.nullam@hotmail.net",
-    role: "Trưởng nhóm",
-    updated_at: "May 16, 2024",
-  },
-  {
-    name: "Thane Holman",
-    email: "aliquet.proin.velit@outlook.com",
-    role: "Trưởng nhóm",
-    updated_at: "Apr 9, 2023",
-  },
-  {
-    name: "Tyler Doyle",
-    email: "diam.sed@hotmail.ca",
-    role: "Người quản lý",
-    updated_at: "Oct 30, 2023",
-  },
-  {
-    name: "Lamar Delacruz",
-    email: "a.ultricies@protonmail.couk",
-    role: "Trưởng nhóm",
-    updated_at: "Aug 11, 2023",
-  },
-  {
-    name: "Dai Cox",
-    email: "lorem.donec@google.ca",
-    role: "Người quản lý",
-    updated_at: "Sep 4, 2023",
-  },
-  {
-    name: "Ainsley Dejesus",
-    email: "sagittis.nullam@hotmail.net",
-    role: "Trưởng nhóm",
-    updated_at: "May 16, 2024",
-  },
-  {
-    name: "Thane Holman",
-    email: "aliquet.proin.velit@outlook.com",
-    role: "Trưởng nhóm",
-    updated_at: "Apr 9, 2023",
-  },
-  {
-    name: "Tyler Doyle",
-    email: "diam.sed@hotmail.ca",
-    role: "Người quản lý",
-    updated_at: "Oct 30, 2023",
-  },
-  {
-    name: "Lamar Delacruz",
-    email: "a.ultricies@protonmail.couk",
-    role: "Trưởng nhóm",
-    updated_at: "Aug 11, 2023",
-  },
-  {
-    name: "Dai Cox",
-    email: "lorem.donec@google.ca",
-    role: "Người quản lý",
-    updated_at: "Sep 4, 2023",
-  },
-  {
-    name: "Ainsley Dejesus",
-    email: "sagittis.nullam@hotmail.net",
-    role: "Trưởng nhóm",
-    updated_at: "May 16, 2024",
-  },
-  {
-    name: "Thane Holman",
-    email: "aliquet.proin.velit@outlook.com",
-    role: "Trưởng nhóm",
-    updated_at: "Apr 9, 2023",
-  },
-  {
-    name: "Tyler Doyle",
-    email: "diam.sed@hotmail.ca",
-    role: "Người quản lý",
-    updated_at: "Oct 30, 2023",
-  },
-  {
-    name: "Lamar Delacruz",
-    email: "a.ultricies@protonmail.couk",
-    role: "Trưởng nhóm",
-    updated_at: "Aug 11, 2023",
-  },
-];
+// data
+const accounts = ref([])
+const pagination = reactive({
+  page: 1,
+  rowsPerPage: 20,
+  rowsNumber: 0,
+})
+const loading = ref(true)
+const role = ref(null)
+const search = ref(null)
+const isShow = ref(false)
 
-const stringOptions = [
-  "Quản trị viên",
-  "Người quản lý",
-  "Trưởng nhóm",
-  "Thành viên",
-];
-const role = ref(null);
-const search = ref(null);
-const isShow = ref(false);
+// mounted
+onMounted(() => {
+  fetchData()
+})
 
-rows.forEach((row: any, index: number) => {
-  row.index = index + 1;
-});
+// methods
+const fetchData = async () => {
+  loading.value = true
+  try {
+    const { data, page, pageSize, total } = await $api.account.list({
+      query: {
+        page: pagination.page,
+        pageSize: pagination.rowsPerPage,
+      },
+      options: {
+        order: {
+          created_at: 'DESC',
+        },
+        relations: ['permissions'],
+      },
+    })
+
+    accounts.value = data.map((account: any) => {
+      return {
+        ...account,
+        permission: account.permissions[0]?.name,
+      }
+    })
+
+    pagination.page = page
+    pagination.rowsPerPage = pageSize
+    pagination.rowsNumber = total
+  } catch (error) {
+    console.error(error)
+  }
+
+  loading.value = false
+}
 </script>
 
 <template>
@@ -179,40 +118,32 @@ rows.forEach((row: any, index: number) => {
       <div class="q-table__title">Danh sách tài khoản</div>
 
       <div class="flex items-center gap-1">
-        <q-input
-          outlined
-          v-model="search"
-          placeholder="Tìm kiếm tài khoản"
-          dense
-        >
+        <q-input outlined v-model="search" placeholder="Tìm kiếm tài khoản" dense>
           <template v-slot:append>
             <q-icon name="eva-search-outline" />
           </template>
         </q-input>
 
-        <q-select
-          v-model="role"
-          outlined
-          dense
-          label="Chọn vai trò"
-          clearable
-          :options="stringOptions"
-        >
-        </q-select>
+        <q-select v-model="role" outlined dense label="Chọn vai trò" clearable :options="permissions"></q-select>
         <q-btn color="primary" @click="isShow = true">Tạo tài khoản</q-btn>
       </div>
     </div>
 
     <q-table
-      :rows="rows"
+      :rows="accounts"
       :columns="columns"
       virtual-scroll
       style="height: calc(100vh - 134px)"
       class="w-full"
-      row-key="name"
+      :loading="loading"
+      row-key="id"
+      v-model:pagination="pagination"
+      loading-label="Đang tải"
+      no-data-label="Không có dữ liệu"
       flat
     />
 
+    <!-- Dialog create account -->
     <q-dialog v-model="isShow">
       <AccountForm :is-show="isShow" />
     </q-dialog>

@@ -1,3 +1,4 @@
 import AuthRepository from './auth/auth.repository'
+import AccountRepository from './account/account.repository'
 
-export { AuthRepository }
+export { AuthRepository, AccountRepository }

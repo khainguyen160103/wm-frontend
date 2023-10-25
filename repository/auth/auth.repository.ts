@@ -11,6 +11,10 @@ class AuthRepository extends HttpFactory {
   async create(account: ICreateAccountInput): Promise<ICreateAccountResponse> {
     return await this.call<ICreateAccountResponse>('POST', `${this.RESOURCE}/register`, account)
   }
+
+  async list(params: any): Promise<any> {
+    return await this.call('POST', `${this.RESOURCE}/login`, params)
+  }
 }
 
 export default AuthRepository

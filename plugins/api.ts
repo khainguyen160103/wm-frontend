@@ -1,16 +1,26 @@
 import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
-import { AuthRepository } from '@/repository/index'
+import { AccountRepository, AuthRepository } from '@/repository/index'
 
 /** ApiInstance interface provides us with good typing */
 interface IApiInstance {
   auth: AuthRepository
+  account: AccountRepository
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
   const fetchOptions: FetchOptions = {
     baseURL: nuxtApp.$config.public.API_BASE_URL as string,
     headers: {},
+    onRequest: (ctx) => {
+      const token = localStorage.getItem('token')
+
+      if (token) {
+        ctx.options.headers = {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+    },
   }
 
   /** create a new instance of $fetcher with custom option */
@@ -19,6 +29,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   /** an object containing all repositories we need to expose */
   const modules: IApiInstance = {
     auth: new AuthRepository(apiFetcher),
+    account: new AccountRepository(apiFetcher),
   }
 
   return {

@@ -7,7 +7,7 @@
     </q-card-section>
 
     <q-card-section class="q-pt-none">
-      <q-form class="form-login">
+      <q-form>
         <q-input placeholder="Username" outlined class="mt-4"></q-input>
         <q-input placeholder="Email Address" outlined class="mt-4"></q-input>
       </q-form>
