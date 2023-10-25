@@ -1,11 +1,12 @@
 import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
-import { AccountRepository, AuthRepository } from '@/repository/index'
+import { AccountRepository, AuthRepository, ProjectRepository } from '@/repository/index'
 
 /** ApiInstance interface provides us with good typing */
 interface IApiInstance {
   auth: AuthRepository
   account: AccountRepository
+  project: ProjectRepository
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -30,6 +31,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const modules: IApiInstance = {
     auth: new AuthRepository(apiFetcher),
     account: new AccountRepository(apiFetcher),
+    project: new ProjectRepository(apiFetcher),
   }
 
   return {
