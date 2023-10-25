@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: ['nuxt-quasar-ui'],
+  modules: ['nuxt-quasar-ui', '@pinia/nuxt'],
 
   quasar: {
     extras: {
