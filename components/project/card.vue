@@ -1,11 +1,39 @@
 <script lang="ts" setup>
+import moment from 'moment'
+
 const props = defineProps({
   project: {
     type: Object,
     required: true,
   },
 })
+
+//methods
+const formatDate = (date: string) => {
+  return moment(date).format('DD/MM/YYYY')
+}
 </script>
+
+<template>
+  <nuxt-link :to="`/project/${project.id}`">
+    <div class="project-card flex flex-col justify-between border border-gray-200">
+      <div class="project-card__content flex flex-col gap-1">
+        <div class="flex flex-row items-center justify-between">
+          <AccountAvatar :src="project.avatar" :name="project.name" :color="project.color" :size="36" />
+          <span>{{ formatDate(project.updated_at) }}</span>
+        </div>
+        <span class="font-bold text-xl truncate mt-2">{{ project.name }}</span>
+        <span class="truncate">{{ project.description }}</span>
+      </div>
+
+      <div class="project-card__leader py-2 bg-gray-100 relative border-t border-gray-200">
+        <AccountAvatar :src="project.leader.src" :name="project.leader.name" :color="project.leader.color" :size="24" />
+
+        {{ project.leader.name }}
+      </div>
+    </div>
+  </nuxt-link>
+</template>
 
 <style lang="scss" scoped>
 .project-card {
@@ -31,19 +59,3 @@ const props = defineProps({
   }
 }
 </style>
-
-<template>
-  <div class="project-card flex flex-col justify-between border border-gray-200">
-    <div class="project-card__content flex flex-col gap-1">
-      <AccountAvatar :src="project.avatar" :name="project.name" :color="project.color" :size="36" />
-      <span class="font-bold text-xl truncate mt-2">{{ project.name }}</span>
-      <span class="truncate">{{ project.description }}</span>
-    </div>
-
-    <div class="project-card__leader py-2 bg-gray-100 relative border-t border-gray-200">
-      <AccountAvatar :src="project.leader.src" :name="project.leader.name" :color="project.leader.color" :size="24" />
-
-      {{ project.leader.name }}
-    </div>
-  </div>
-</template>

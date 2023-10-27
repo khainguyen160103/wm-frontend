@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.6",
+    "moment": "^2.29.4",
     "nuxt-quasar-ui": "^2.0.6",
     "ohmyfetch": "^0.4.21",
     "quasar": "^2.12.6"
