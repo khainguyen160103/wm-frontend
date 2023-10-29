@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const { $api } = useNuxtApp()
+import { authStore } from '../../store/auth'
+
+const store = authStore()
 
 definePageMeta({
   layout: 'empty',
@@ -20,13 +22,7 @@ const account = reactive({
 // methods
 const handleLogin = async () => {
   console.log('handleLogin: ', account)
-  try {
-    const response = await $api.auth.login(account)
-    console.log(response)
-    // allow user access into the app
-  } catch (error) {
-    console.error(error)
-  }
+  await store.login(account)
 }
 </script>
 

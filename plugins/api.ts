@@ -1,6 +1,7 @@
 import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
 import { AccountRepository, AuthRepository, ProjectRepository } from '@/repository/index'
+import { TOKEN_NAME } from '~/constants/token'
 
 /** ApiInstance interface provides us with good typing */
 interface IApiInstance {
@@ -14,7 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     baseURL: nuxtApp.$config.public.API_BASE_URL as string,
     headers: {},
     onRequest: (ctx) => {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem(TOKEN_NAME)
 
       if (token) {
         ctx.options.headers = {
