@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { TOKEN_NAME } from '~/constants/token'
-
-interface IAccount {}
+import { IAccount } from '~/interfaces/account.interface'
 
 interface ILogin {
   email: string | null
@@ -34,15 +33,19 @@ export const useAuthStore = defineStore('auth', {
       await navigateTo({ path: '/account/login' })
     },
 
-    async profile() {
+    async profile(): Promise<IAccount | null> {
       const { $api } = useNuxtApp()
 
       try {
         const account = await $api.account.profile()
         this.account = account
+
+        return account
       } catch (error) {
         console.error(`login: `, error)
       }
+
+      return null
     },
   },
 })

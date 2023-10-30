@@ -34,7 +34,7 @@ const handleCreateProject = () => {
 
 <template>
   <div class="q-pa-md example-row-equal-width project-page">
-    <div class="filter flex justify-between">
+    <div class="filter flex justify-between mb-2">
       <q-btn color="primary" @click="handleCreateProject">Tạo dự án</q-btn>
     </div>
     <div class="flex items-center justify-start gap-8">

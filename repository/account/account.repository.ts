@@ -1,5 +1,5 @@
 import HttpFactory from '../factory'
-import { IAccount } from './account.interface'
+import { IAccount } from '~/interfaces/account.interface'
 
 class AccountRepository extends HttpFactory {
   private RESOURCE = '/account'
