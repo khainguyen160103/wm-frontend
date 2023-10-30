@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { TOKEN_NAME } from '~/constants/token'
+
 const { $api } = useNuxtApp()
 
 interface IAccount {}
@@ -27,7 +28,9 @@ export const authStore = defineStore('auth', {
       }
     },
 
-    logout() {},
+    logout() {
+      localStorage.removeItem(TOKEN_NAME)
+    },
 
     profile() {},
   },

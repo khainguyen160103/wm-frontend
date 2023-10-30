@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { authStore } from '../../store/auth'
+import { authStore } from '~/store/auth'
 
 const store = authStore()
 

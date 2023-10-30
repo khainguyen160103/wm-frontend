@@ -1,6 +1,6 @@
 import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
-import { AccountRepository, AuthRepository, ProjectRepository } from '@/repository/index'
+import { AccountRepository, AuthRepository, ProjectRepository, TaskRepository } from '@/repository/index'
 import { TOKEN_NAME } from '~/constants/token'
 
 /** ApiInstance interface provides us with good typing */
@@ -8,6 +8,7 @@ interface IApiInstance {
   auth: AuthRepository
   account: AccountRepository
   project: ProjectRepository
+  task: TaskRepository
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -33,6 +34,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     auth: new AuthRepository(apiFetcher),
     account: new AccountRepository(apiFetcher),
     project: new ProjectRepository(apiFetcher),
+    task: new TaskRepository(apiFetcher),
   }
 
   return {
