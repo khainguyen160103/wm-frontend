@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 useHead({
-  title: 'Work Management',
+  title: 'Quản trị công việc',
 })
 
 // definePageMeta({

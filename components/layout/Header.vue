@@ -8,7 +8,7 @@
 
 <template>
   <div class="layout-header flex items-center justify-between border-b border-gray-200 py-2 px-4">
-    <GlobalLogo />
+    <GlobalLogo style="margin-bottom: 4px" />
 
     <div class="layout-header__action flex items-center gap-2">
       <q-btn icon="eva-bell-outline" flat round></q-btn>

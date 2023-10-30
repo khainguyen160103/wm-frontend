@@ -1,11 +1,20 @@
 import { defineStore } from 'pinia'
-import { TOKEN_NAME } from '~/constants/token'
 import { IProject } from '~/repository/project/project.interface'
 
-const { $api } = useNuxtApp()
-
-export const projectStore = defineStore('project', {
+export const useProjectStore = defineStore('project', {
   state: () => ({ project: null as IProject | null }),
 
-  actions: {},
+  actions: {
+    async getProject() {
+      const { $api } = useNuxtApp()
+
+      try {
+        const project = await $api.project.getById(1)
+
+        if (project) this.project = project
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
 })
