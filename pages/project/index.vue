@@ -26,11 +26,17 @@ const fetchData = async () => {
     console.error(error)
   }
 }
+
+const handleCreateProject = () => {
+  console.log('handleCreateProject')
+}
 </script>
 
 <template>
   <div class="q-pa-md example-row-equal-width project-page">
-    <div class="filter"></div>
+    <div class="filter flex justify-between">
+      <q-btn color="primary" @click="handleCreateProject">Tạo dự án</q-btn>
+    </div>
     <div class="flex items-center justify-start gap-8">
       <ProjectCard class="col-5" :project="project" v-for="project in projects" :key="project.id" />
     </div>
