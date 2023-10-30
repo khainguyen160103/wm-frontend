@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { authStore } from '~/store/auth'
+import { useAuthStore } from '~/store/auth'
 
-const store = authStore()
+const authStore = useAuthStore()
 
 definePageMeta({
   layout: 'empty',
@@ -21,8 +21,7 @@ const account = reactive({
 
 // methods
 const handleLogin = async () => {
-  console.log('handleLogin: ', account)
-  await store.login(account)
+  await authStore.login(account)
 }
 </script>
 
@@ -42,7 +41,7 @@ const handleLogin = async () => {
 
       <q-input v-model="account.email" placeholder="Email" outlined class="mt-4"></q-input>
 
-      <q-input v-model="account.password" placeholder="Mật khẩu" outlined class="mt-4"></q-input>
+      <q-input v-model="account.password" placeholder="Mật khẩu" outlined class="mt-4" type="password"></q-input>
 
       <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" @click="handleLogin" />
     </q-form>

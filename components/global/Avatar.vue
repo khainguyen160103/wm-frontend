@@ -1,10 +1,16 @@
-<style lang="scss" scoped></style>
-
 <script lang="ts" setup>
 const account = ref({
-  name: "QuangTV",
-  avatar: "https://avatars.githubusercontent.com/u/739984?v=4",
-});
+  name: 'QuangTV',
+  avatar: 'https://avatars.githubusercontent.com/u/739984?v=4',
+})
+import { useAuthStore } from '~/store/auth'
+
+const authStore = useAuthStore()
+
+const handleLogout = async () => {
+  console.log('handleLogout')
+  await authStore.logout()
+}
 </script>
 
 <template>
@@ -13,12 +19,7 @@ const account = ref({
       <img :src="account.avatar" />
     </q-avatar>
 
-    <q-menu
-      touch-position
-      anchor="bottom end"
-      transition-show="jump-down"
-      transition-hide="jump-up"
-    >
+    <q-menu touch-position anchor="bottom end" transition-show="jump-down" transition-hide="jump-up">
       <q-list style="min-width: 120px">
         <q-item clickable v-close-popup style="width: 180px">
           <q-item-section>
@@ -28,12 +29,7 @@ const account = ref({
             </div>
           </q-item-section>
         </q-item>
-        <q-item
-          clickable
-          v-close-popup
-          style="width: 180px"
-          to="/account/login"
-        >
+        <q-item clickable v-close-popup style="width: 180px" @click="handleLogout">
           <q-item-section class="hover:text-red-400 duration-100">
             <div class="flex items-center gap-2">
               <q-icon name="eva-log-out-outline"></q-icon>
@@ -45,3 +41,5 @@ const account = ref({
     </q-menu>
   </div>
 </template>
+
+<style lang="scss" scoped></style>

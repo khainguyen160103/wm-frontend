@@ -18,6 +18,7 @@ class HttpFactory {
       if (!data) data = {}
       data = JSON.stringify(data) as any
     }
+
     const $res: T = await this.$fetch(url, { method, body: data, ...extras })
     return $res
   }
