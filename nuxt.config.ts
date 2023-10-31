@@ -21,6 +21,11 @@ export default defineNuxtConfig({
       path: '~/components/account',
       global: true,
     },
+    {
+      prefix: 'Column',
+      path: '~/components/column',
+      global: true,
+    },
   ],
 
   runtimeConfig: {
