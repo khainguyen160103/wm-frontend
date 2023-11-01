@@ -6,5 +6,5 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="page-project-information">information</div>
+  <div class="page-project-sprint">sprint</div>
 </template>

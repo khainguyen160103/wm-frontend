@@ -22,6 +22,11 @@ const sidebarItems = ref([
     icon: 'eva-bar-chart-2-outline',
     path: 'analytics',
   },
+  {
+    name: 'Giai đoạn',
+    icon: 'eva-calendar-outline',
+    path: 'sprint',
+  },
 ])
 </script>
 

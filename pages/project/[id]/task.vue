@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-const columns = [
+definePageMeta({
+  layout: 'project',
+  middleware: ['project'],
+})
+
+// data
+const columns = ref([
   {
     id: 1,
     name: 'Mới',
@@ -15,8 +21,7 @@ const columns = [
     name: 'Hoàn thành',
     color: '#1abc9c',
   },
-]
-
+])
 const value = ref(true)
 const search = ref(null)
 </script>
