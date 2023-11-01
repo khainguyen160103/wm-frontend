@@ -16,10 +16,14 @@ const columns = [
     color: '#1abc9c',
   },
 ]
+
+const value = ref(true)
+const search = ref(null)
 </script>
 
 <template>
-  <div class="page-project-task flex flex-col">
+  <div class="page-project-task flex flex-col flex-nowrap">
+    <!-- Header -->
     <div class="page-project-task__header overflow-auto flex flex-row justify-between w-full mb-4">
       <q-input outlined v-model="search" placeholder="Tìm kiếm công việc" dense>
         <template v-slot:append>
@@ -28,19 +32,27 @@ const columns = [
       </q-input>
 
       <div class="flex items-center gap-2">
+        <q-toggle v-model="value" color="primary" left-label label="Hiển thị thẻ" />
         <q-btn color="primary">Tạo công việc</q-btn>
       </div>
     </div>
-    <div class="page-project-task__container overflow-auto flex flex-row w-full gap-4">
+
+    <!-- Container -->
+    <div class="page-project-task__container flex flex-row flex-nowrap w-full gap-4 overflow-x-auto">
       <Column v-for="column in columns" :key="column.id" :column="column" />
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .page-project-task {
+  &.page {
+    padding-bottom: 0px;
+  }
   &__container {
-    height: calc(100vh - 144px);
+    height: calc(100vh - 132px);
+    width: calc(100vw - 292px);
+    padding-bottom: 16px;
   }
 }
 </style>

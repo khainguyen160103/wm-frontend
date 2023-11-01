@@ -2,6 +2,7 @@ import { $fetch, FetchOptions } from 'ohmyfetch'
 import { defineNuxtPlugin } from '#app'
 import { AccountRepository, AuthRepository, ProjectRepository, TaskRepository } from '@/repository/index'
 import { TOKEN_NAME } from '~/constants/token'
+import ColumnRepository from '~/repository/column/column.repository'
 
 /** ApiInstance interface provides us with good typing */
 interface IApiInstance {
@@ -9,6 +10,7 @@ interface IApiInstance {
   account: AccountRepository
   project: ProjectRepository
   task: TaskRepository
+  column: ColumnRepository
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -35,6 +37,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     account: new AccountRepository(apiFetcher),
     project: new ProjectRepository(apiFetcher),
     task: new TaskRepository(apiFetcher),
+    column: new ColumnRepository(apiFetcher),
   }
 
   return {

@@ -15,8 +15,8 @@ const formatDate = (date: string) => {
 </script>
 
 <template>
-  <nuxt-link :to="`/project/${project.id}`">
-    <div class="project-card flex flex-col justify-between border border-gray-200">
+  <nuxt-link :to="`/project/${project.id}/task`">
+    <div class="project-card flex flex-col justify-between border border-gray-200 hover:shadow-md">
       <div class="project-card__content flex flex-col gap-1">
         <div class="flex flex-row items-center justify-between">
           <AccountAvatar :src="project.avatar" :name="project.name" :color="project.color" :size="36" />
@@ -44,9 +44,9 @@ const formatDate = (date: string) => {
   user-select: none;
   cursor: pointer;
 
-  &:hover {
-    box-shadow: 0px 0px 0px 2px var(--q-primary);
-  }
+  // &:hover {
+  //   box-shadow: 0px 0px 0px 2px var(--q-primary);
+  // }
 
   &__content {
     padding: 20px 20px 0px 20px;

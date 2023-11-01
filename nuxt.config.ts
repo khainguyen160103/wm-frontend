@@ -26,6 +26,11 @@ export default defineNuxtConfig({
       path: '~/components/column',
       global: true,
     },
+    {
+      prefix: 'Task',
+      path: '~/components/task',
+      global: true,
+    },
   ],
 
   runtimeConfig: {

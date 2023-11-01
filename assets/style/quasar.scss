@@ -14,10 +14,14 @@ body {
 
 .q-field {
   background-color: #ffffff;
-  height: 40px;
+  height: 36px;
 
   &__control {
-    height: 40px;
+    height: 36px;
+  }
+
+  &--dense {
+    height: 36px;
   }
 }
 
@@ -37,4 +41,14 @@ body {
     color: var(--q-primary);
     background-color: var(--q-primary-hover);
   }
+}
+
+.q-field--dense .q-field__control,
+.q-field--dense .q-field__marginal {
+  height: 36px;
+}
+
+.q-field--auto-height.q-field--dense .q-field__control,
+.q-field--auto-height.q-field--dense .q-field__native {
+  min-height: 36px;
 }
