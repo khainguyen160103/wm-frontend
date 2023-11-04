@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import draggable from 'vuedraggable'
 import { IColumn } from '../../interfaces/column.inteface'
 
 const props = defineProps({
@@ -13,22 +14,34 @@ const tasks = [
   { id: 2, name: 'Task 1 for item', due_date: '2023-10-21 09:45:35.792049' },
   { id: 3, name: 'Task 1 for item', due_date: '2023-10-21 09:45:35.792049' },
 ]
+
+// data
+const isShowCreate = ref(false)
+
+// methods
+const addTask = () => {}
 </script>
 
 <template>
   <div class="column flex flex-col bg-gray-100" :style="`border-top: 4px solid ${column.color}`">
     <!-- Header -->
     <div class="column__header flex items-center justify-between">
-      <span>{{ column.name }}</span>
+      <span class="font-semibold">{{ column.name }}</span>
       <div class="flex items-center gap-1">
-        <q-icon name="eva-credit-card-outline"></q-icon>
-        10
+        <q-icon name="eva-credit-card-outline" size="18px"></q-icon>
+        {{ column.tasks && column.tasks.length }}
       </div>
     </div>
 
     <!-- Wrapper -->
     <div class="column__wrapper flex flex-col gap-2">
-      <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
+      <TaskForm @create="addTask" v-if="column.name === 'Mới' && isShowCreate" @close="isShowCreate = false" />
+
+      <draggable v-model="tasks" ghost-class="ghost" item-key="id" handle=".task-item" class="flex flex-col gap-2">
+        <template #item="{ element: task }">
+          <TaskItem :key="task.id" :task="task" />
+        </template>
+      </draggable>
     </div>
   </div>
 </template>

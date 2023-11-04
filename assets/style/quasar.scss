@@ -1,6 +1,6 @@
 body {
-  --q-primary: #7366ff;
-  --q-primary-hover: #f1f0fd;
+  --q-primary: #007cff;
+  --q-primary-hover: #95beff;
 }
 
 .q-form {
@@ -26,8 +26,15 @@ body {
 }
 
 .q-btn {
+  box-shadow: none;
+  border-radius: 4px;
+
+  &::before {
+    box-shadow: none;
+  }
+
   &.bg-primary {
-    background: #7366ff !important;
+    background: var(--q-primary) !important;
   }
 }
 
@@ -51,4 +58,17 @@ body {
 .q-field--auto-height.q-field--dense .q-field__control,
 .q-field--auto-height.q-field--dense .q-field__native {
   min-height: 36px;
+}
+
+.q-btn--actionable.q-btn--standard:active:before,
+.q-btn--actionable.q-btn--standard.q-btn--active:before {
+  box-shadow: none;
+}
+
+.q-timeline {
+  &__dot {
+    &.text-secondary {
+      color: var(--q-primary) !important;
+    }
+  }
 }

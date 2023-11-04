@@ -3,6 +3,10 @@ definePageMeta({
   layout: 'project',
   middleware: ['project'],
 })
+
+useHead({
+  title: 'Thống kê công việc',
+})
 </script>
 
 <template>

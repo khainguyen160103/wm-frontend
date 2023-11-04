@@ -18,7 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     baseURL: nuxtApp.$config.public.API_BASE_URL as string,
     headers: {},
     onRequest: (ctx) => {
-      const token = localStorage.getItem(TOKEN_NAME)
+      const token = process.client ? localStorage.getItem(TOKEN_NAME) : null
 
       if (token) {
         ctx.options.headers = {

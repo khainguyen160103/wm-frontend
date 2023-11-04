@@ -16,8 +16,8 @@ const formatDate = (date: string) => {
 </script>
 
 <template>
-  <div class="task-item w-full bg-white rounded-md hover:shadow-sm flex flex-col gap-1">
-    <span class="font-semibold">{{ task.name }}</span>
+  <div class="task-item w-full bg-white rounded-md hover:shadow-sm flex flex-col gap-1 cursor-pointer">
+    <nuxt-link class="font-semibold hover:underline cursor-pointer" :to="`task/${task.id}`">{{ task.name }}</nuxt-link>
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-0.5">
         <q-icon name="eva-book-outline"></q-icon>
