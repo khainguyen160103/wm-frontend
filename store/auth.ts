@@ -20,7 +20,7 @@ export const useAuthStore = defineStore('auth', {
           localStorage.setItem(TOKEN_NAME, response.access_token)
         }
         this.profile()
-        await navigateTo({ path: '/project' })
+        await navigateTo({ name: 'ProjectList' })
         // handle redirect to index
       } catch (error) {
         console.error(`login: `, error)
@@ -42,10 +42,14 @@ export const useAuthStore = defineStore('auth', {
 
         return account
       } catch (error) {
-        console.error(`login: `, error)
+        console.error(`profile: `, error)
       }
 
       return null
     },
+  },
+
+  persist: {
+    storage: persistedState.localStorage,
   },
 })

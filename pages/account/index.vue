@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const { $api } = useNuxtApp()
 
-// definePageMeta({
-//   middleware: ['auth'],
-// })
+definePageMeta({
+  name: 'ListAccount',
+})
 
 useHead({
   title: 'Quản lý tài khoản',

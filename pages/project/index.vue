@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 const { $api } = useNuxtApp()
 
+definePageMeta({
+  name: 'ProjectList',
+})
+
 useHead({
   title: 'Quản lý dự án',
 })

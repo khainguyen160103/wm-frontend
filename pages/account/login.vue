@@ -6,7 +6,7 @@ const authStore = useAuthStore()
 
 definePageMeta({
   layout: 'empty',
-  name: 'WM Login',
+  name: 'Login',
 })
 
 useHead({
@@ -18,10 +18,16 @@ const account = reactive({
   email: null,
   password: null,
 })
+const isLoading = ref(false)
 
 // methods
 const handleLogin = async () => {
+  isLoading.value = true
   await authStore.login(account)
+
+  setTimeout(() => {
+    isLoading.value = false
+  }, 1000)
 }
 </script>
 
@@ -43,7 +49,7 @@ const handleLogin = async () => {
 
       <q-input v-model="account.password" placeholder="Mật khẩu" outlined class="mt-4" type="password"></q-input>
 
-      <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" @click="handleLogin" />
+      <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" @click="handleLogin" :loading="isLoading" />
     </q-form>
   </div>
 </template>

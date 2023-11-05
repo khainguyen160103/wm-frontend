@@ -1,29 +1,26 @@
 import { useAuthStore } from '~/store/auth'
 
 export default defineNuxtRouteMiddleware(async (from, to) => {
-  // const authStore = useAuthStore()
-  // let account = authStore?.$state?.account
-  // // console.log('account: ', account)
+  const authStore = useAuthStore()
 
-  // if (!account) {
-  //   // get profile
-  //   console.log('get profile')
-  //   account = await authStore.profile()
-  // }
+  if (from.name === 'Login') return true
 
-  // if (account) {
-  //   console.log('from: ', from)
-  //   console.log('to: ', to)
-  //   // return navigateTo({ path: from.path })
-  // }
+  let account = authStore?.$state?.account
 
-  // if (from.path === '/account/login') return true
-  // console.log('account: ', account)
+  if (process.client) {
+    if (!account) {
+      // get profile
+      account = await authStore.profile()
+    }
 
-  // if (!account) {
-  //   console.log('redirect to login')
-  //   return navigateTo({ path: '/account/login' })
-  // }
+    if (account && from.name === 'index') {
+      return navigateTo({ name: 'ProjectList' })
+    }
+
+    if (!account) {
+      return navigateTo({ name: 'Login' })
+    }
+  }
 
   return true
 })

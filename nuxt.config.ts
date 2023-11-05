@@ -41,7 +41,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: false },
 
-  modules: ['nuxt-quasar-ui', '@pinia/nuxt'],
+  modules: ['nuxt-quasar-ui', '@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
 
   quasar: {
     extras: {
@@ -56,5 +56,13 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+
+  // piniaPersistedstate
+  piniaPersistedstate: {
+    cookieOptions: {
+      sameSite: 'strict',
+    },
+    storage: 'localStorage',
   },
 })

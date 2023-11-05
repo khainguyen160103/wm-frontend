@@ -2,6 +2,7 @@
 definePageMeta({
   layout: 'project',
   middleware: ['project'],
+  name: 'ProjectAnalytics',
 })
 
 useHead({
