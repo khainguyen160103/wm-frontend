@@ -7,15 +7,22 @@ const account = authStore.account
 const handleLogout = async () => {
   await authStore.logout()
 }
+
+const toProfile = async () => {
+  return navigateTo({ name: 'AccountProfile' })
+}
 </script>
 
 <template>
-  <div class="">
-    <AccountAvatar v-if="account" :color="account.color" :src="account.avatar" :name="account.name" :size="28" />
+  <div v-if="account">
+    <div class="flex items-center gap-2">
+      <AccountAvatar :color="account.color" :src="account.avatar" :name="account.name" :size="24" />
+      <span class="truncate text-" style="max-width: 160px">{{ account.name }}</span>
+    </div>
 
     <q-menu touch-position anchor="bottom end" transition-show="jump-down" transition-hide="jump-up">
       <q-list style="min-width: 120px">
-        <q-item clickable v-close-popup style="width: 180px">
+        <q-item clickable v-close-popup style="width: 180px" @click="toProfile">
           <q-item-section>
             <div class="flex items-center gap-2">
               <q-icon name="eva-person-outline"></q-icon>

@@ -14,43 +14,42 @@ const project = projectStore.project
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 layout-sidebar-sub p-2 text-gray-100">
-    <div class="flex justify-between w-full">
-      <nuxt-link :to="{ name: 'ProjectList' }">
-        <q-btn>Logo</q-btn>
-      </nuxt-link>
+  <div class="flex flex-col gap-2 layout-sidebar-sub border-b p-2">
+    <div class="flex justify-between w-full" style="height: 44px">
+      <GlobalAvatar class="h-full flex items-center cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-md" />
 
-      <div class="flex items-center gap-2">
-        <q-btn flat round>
-          <q-icon name="eva-bell-outline" size="20px"></q-icon>
-        </q-btn>
-        <GlobalAvatar class="h-full flex items-center" />
+      <div class="flex items-center gap-2 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+        <q-icon name="eva-bell-outline" size="20px"></q-icon>
       </div>
     </div>
 
     <!-- Project quick info -->
-    <nuxt-link
-      v-if="isProject && project"
-      class="p-2 flex items-center gap-1 rounded-md project-quick-info"
-      :to="{ name: 'ProjectInformation' }"
-    >
-      <AccountAvatar :color="project.color" :src="project.avatar" :name="project.name" :size="28" />
+    <div v-if="isProject && project" class="w-full">
+      <!-- <nuxt-link>
+        <span class="mb-2 w-full sidebar-item text-base hover:bg-gray-100 px-4 py-2">Danh sách dự án</span>
+      </nuxt-link> -->
 
-      <span>
-        {{ project.name }}
-      </span>
-    </nuxt-link>
+      <nuxt-link
+        class="text-base hover:bg-gray-100 px-4 py-2 flex items-center gap-1 rounded-md project-quick-info"
+        :to="{ name: 'ProjectInformation' }"
+      >
+        <AccountAvatar :color="project.color" :src="project.avatar" :name="project.name" :size="24" />
+
+        <span class="truncate">Dự án: {{ project.name }}</span>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .layout-sidebar-sub {
-  background-color: var(--q-primary);
+  // background-color: var(--q-primary);
+  min-height: 44px;
   opacity: 0.8;
 }
 
 .project-quick-info {
-  background-color: var(--q-primary-hover);
+  // background-color: var(--q-primary-hover);
   opacity: 1;
   cursor: pointer;
 

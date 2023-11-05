@@ -1,16 +1,14 @@
 <script lang="ts" setup>
-const { currentRoute } = useRouter()
+import { useAuthStore } from '~/store/auth'
 
-const mapName = {
-  AccountList: 'Tài khoản',
-  ProjectList: 'Dự án',
-  Category: 'Danh mục',
-}
+const authStore = useAuthStore()
+
+const account = authStore.account
 </script>
 
 <template>
   <div class="layout-header w-full flex items-center justify-between border-b border-gray-200 py-2 px-4">
-    <span class="font-semibold hover:underline cursor-pointer">{{ mapName[currentRoute.name] }}</span>
+    <span class="font-semibold hover:underline cursor-pointer" v-if="account">{{ account.name }}</span>
   </div>
 </template>
 

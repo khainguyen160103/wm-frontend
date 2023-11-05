@@ -34,7 +34,7 @@ const sidebarItems = ref([
   <div class="project-sidebar flex flex-col border-r">
     <LayoutSidebarSub :is-project="true" />
 
-    <div dense padding class="flex flex-col border-r p-2 gap-1">
+    <div dense padding class="flex flex-col p-2 gap-1">
       <LayoutSidebarItem v-for="sidebarItem in sidebarItems" :key="sidebarItem.name" :item="sidebarItem" />
     </div>
   </div>
