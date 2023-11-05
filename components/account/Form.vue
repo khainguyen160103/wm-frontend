@@ -27,7 +27,7 @@ const permissions = [
 const form = ref({
   name: null,
   email: null,
-  permissions: [],
+  permissionId: null,
 })
 
 // methods
@@ -36,6 +36,7 @@ const handleCreateAccount = async () => {
     const response = await $api.auth.create({
       name: form.value.name,
       email: form.value.email,
+      permissions: [{ id: form.value.permissionId }],
     })
 
     if (response) emit('create', response)
@@ -60,7 +61,16 @@ const handleCreateAccount = async () => {
       </div>
       <div>
         <label>Vai trò</label>
-        <q-select v-model="role" outlined dense label="Chọn vai trò" clearable :options="permissions"></q-select>
+        <q-select
+          v-model="form.permissionId"
+          outlined
+          dense
+          label="Chọn vai trò"
+          clearable
+          :options="permissions"
+          option-label="name"
+          option-value="id"
+        ></q-select>
       </div>
     </q-form>
 

@@ -136,7 +136,17 @@ const addAccount = (account: IAccount) => {
             <q-icon name="eva-search-outline" />
           </template>
         </q-input>
-        <q-select v-model="role" outlined dense label="Chọn vai trò" clearable :options="permissions"></q-select>
+        <q-select
+          v-model="role"
+          outlined
+          dense
+          label="Chọn vai trò"
+          option-label="name"
+          option-value="id"
+          clearable
+          style="min-width: 130px"
+          :options="permissions"
+        ></q-select>
       </div>
 
       <q-btn color="primary" @click="isShow = true">Tạo tài khoản</q-btn>

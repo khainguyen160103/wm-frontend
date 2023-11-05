@@ -48,7 +48,15 @@ const handleCreateProject = () => {
           </template>
         </q-input>
 
-        <q-select v-model="leader" outlined dense label="Chọn quản lý" clearable :options="leaders"></q-select>
+        <q-select
+          v-model="leader"
+          style="min-width: 140px"
+          outlined
+          dense
+          label="Chọn quản lý"
+          clearable
+          :options="leaders"
+        ></q-select>
       </div>
       <q-btn color="primary" @click="handleCreateProject">Tạo dự án</q-btn>
     </div>
