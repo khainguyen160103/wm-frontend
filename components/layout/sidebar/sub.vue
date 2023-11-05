@@ -14,7 +14,7 @@ const project = projectStore.project
 </script>
 
 <template>
-  <div class="flex flex-col gap-2 layout-sidebar-sub border-b p-2">
+  <div class="flex flex-col gap-2 layout-sidebar-sub border-b" :class="isProject ? 'p-2' : 'p-1'">
     <div class="flex justify-between w-full" style="height: 44px">
       <GlobalAvatar class="h-full flex items-center cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-lg" />
 

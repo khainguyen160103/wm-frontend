@@ -23,7 +23,11 @@ const formatDate = (date: string) => {
 
 <template>
   <div class="page-project-sprint">
-    <div class="text-lg font-semibold flex justify-end mb-4">
+    <div class="text-lg font-semibold flex justify-between mb-4">
+      <div class="flex items-center gap-2">
+        <q-icon name="eva-calendar-outline"></q-icon>
+        <span>Giai đoạn</span>
+      </div>
       <q-btn color="primary">Tạo giai đoạn</q-btn>
     </div>
 

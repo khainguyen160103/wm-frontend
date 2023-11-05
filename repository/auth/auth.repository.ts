@@ -1,5 +1,11 @@
 import HttpFactory from '../factory'
-import { ICreateAccountInput, ICreateAccountResponse, ILoginInput, ILoginResponse } from './auth.interface'
+import {
+  IChangePassword,
+  ICreateAccountInput,
+  ICreateAccountResponse,
+  ILoginInput,
+  ILoginResponse,
+} from './auth.interface'
 
 class AuthRepository extends HttpFactory {
   private RESOURCE = '/auth'
@@ -9,7 +15,11 @@ class AuthRepository extends HttpFactory {
   }
 
   async create(account: ICreateAccountInput): Promise<ICreateAccountResponse> {
-    return await this.call<ICreateAccountResponse>('POST', `${this.RESOURCE}/register`, account)
+    return await this.call<ICreateAccountResponse>('POST', `${this.RESOURCE}/account`, account)
+  }
+
+  async changePassword(account: IChangePassword): Promise<any> {
+    return await this.call('PUT', `${this.RESOURCE}/account`, account)
   }
 
   async list(params: any): Promise<any> {

@@ -1,6 +1,7 @@
 body {
   --q-primary: #3396ff;
   --q-primary-hover: #659ffd;
+  --white: #ffffff;
 }
 
 .q-form {
@@ -70,5 +71,12 @@ body {
     &.text-secondary {
       color: var(--q-primary) !important;
     }
+  }
+}
+
+.q-card {
+  &__section,
+  &__section--vert {
+    background-color: var(--white);
   }
 }
