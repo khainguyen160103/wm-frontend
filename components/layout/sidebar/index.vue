@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
 .layout-sidebar {
-  height: calc(100vh - 54px);
+  // height: calc(100vh - 44px);
   width: 260px;
 }
 </style>
@@ -26,9 +26,11 @@ const sidebarItems = ref([
 </script>
 
 <template>
-  <div class="layout-sidebar flex flex-col border-r p-2">
-    <q-list dense padding class="rounded-borders">
+  <div class="layout-sidebar flex flex-col border-r">
+    <LayoutSidebarSub />
+
+    <div dense padding class="flex flex-col border-r p-2 gap-1">
       <LayoutSidebarItem v-for="sidebarItem in sidebarItems" :key="sidebarItem.name" :item="sidebarItem" />
-    </q-list>
+    </div>
   </div>
 </template>

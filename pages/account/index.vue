@@ -115,18 +115,16 @@ const fetchData = async () => {
 <template>
   <div class="account-page flex items-center gap-2">
     <div class="flex flex-row items-center justify-between w-full">
-      <div class="q-table__title">Danh sách tài khoản</div>
-
       <div class="flex items-center gap-1">
         <q-input outlined v-model="search" placeholder="Tìm kiếm tài khoản" dense>
           <template v-slot:append>
             <q-icon name="eva-search-outline" />
           </template>
         </q-input>
-
         <q-select v-model="role" outlined dense label="Chọn vai trò" clearable :options="permissions"></q-select>
-        <q-btn color="primary" @click="isShow = true">Tạo tài khoản</q-btn>
       </div>
+
+      <q-btn color="primary" @click="isShow = true">Tạo tài khoản</q-btn>
     </div>
 
     <q-table

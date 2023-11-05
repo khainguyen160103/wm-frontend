@@ -1,18 +1,22 @@
-<style lang="scss" scoped>
-.layout-header {
-  height: 54px;
-}
-</style>
+<script lang="ts" setup>
+const { currentRoute } = useRouter()
 
-<script lang="ts" setup></script>
+const mapName = {
+  AccountList: 'Tài khoản',
+  ProjectList: 'Dự án',
+  Category: 'Danh mục',
+}
+</script>
 
 <template>
-  <div class="layout-header flex items-center justify-between border-b border-gray-200 py-2 px-4">
-    <GlobalLogo style="margin-bottom: 4px" />
-
-    <div class="layout-header__action flex items-center gap-2">
-      <q-btn icon="eva-bell-outline" flat round></q-btn>
-      <GlobalAvatar class="-mt-1" />
-    </div>
+  <div class="layout-header w-full flex items-center justify-between border-b border-gray-200 py-2 px-4">
+    <!-- <GlobalLogo style="margin-bottom: 4px" /> -->
+    <span class="font-semibold hover:underline cursor-pointer">{{ mapName[currentRoute.name] }}</span>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.layout-header {
+  height: 44px;
+}
+</style>

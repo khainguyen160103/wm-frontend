@@ -1,9 +1,9 @@
 <template>
-  <div class="layout-default w-full h-full">
-    <LayoutHeader />
+  <div class="layout-default w-full h-full flex">
+    <LayoutSidebar />
 
-    <div class="flex w-full">
-      <LayoutSidebar />
+    <div class="flex layout-default__wrapper">
+      <LayoutHeader />
 
       <nuxt-page class="page"></nuxt-page>
     </div>
@@ -13,10 +13,14 @@
 <style lang="scss">
 .layout-default {
   .page {
-    height: calc(100vh - 54px);
-    width: calc(100vw - 260px);
+    height: calc(100vh - 44px);
+    width: 100%;
     padding: 16px;
     overflow: auto;
+  }
+
+  &__wrapper {
+    width: calc(100vw - 260px);
   }
 }
 </style>

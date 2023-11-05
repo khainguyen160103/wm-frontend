@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useColumnStore } from '~/store/column'
+
 definePageMeta({
   layout: 'project',
   middleware: ['project'],
@@ -9,24 +11,11 @@ useHead({
   title: 'Quản lý công việc',
 })
 
+// store
+const columnStore = useColumnStore()
+
 // data
-const columns = ref([
-  {
-    id: 1,
-    name: 'Mới',
-    color: '#2980b9',
-  },
-  {
-    id: 2,
-    name: 'Đang làm',
-    color: '#2ecc71',
-  },
-  {
-    id: 3,
-    name: 'Hoàn thành',
-    color: '#1abc9c',
-  },
-])
+const columns = [...columnStore.columns]
 
 // data
 const value = ref(true)

@@ -10,7 +10,7 @@ definePageMeta({
 })
 
 useHead({
-  title: 'WM Login',
+  title: 'Đăng nhập',
 })
 
 // data

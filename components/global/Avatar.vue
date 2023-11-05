@@ -1,23 +1,17 @@
 <script lang="ts" setup>
-const account = ref({
-  name: 'QuangTV',
-  avatar: 'https://avatars.githubusercontent.com/u/739984?v=4',
-})
 import { useAuthStore } from '~/store/auth'
 
 const authStore = useAuthStore()
+const account = authStore.account
 
 const handleLogout = async () => {
-  console.log('handleLogout')
   await authStore.logout()
 }
 </script>
 
 <template>
   <div class="">
-    <q-avatar size="36px" class="cursor-pointer">
-      <img :src="account.avatar" />
-    </q-avatar>
+    <AccountAvatar v-if="account" :color="account.color" :src="account.avatar" :name="account.name" size="28" />
 
     <q-menu touch-position anchor="bottom end" transition-show="jump-down" transition-hide="jump-up">
       <q-list style="min-width: 120px">
