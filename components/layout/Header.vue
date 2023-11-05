@@ -5,6 +5,11 @@ const mapName = {
   AccountList: 'Tài khoản',
   ProjectList: 'Dự án',
   Category: 'Danh mục',
+  ProjectInformation: 'Thông tin dự án',
+  ProjectTask: 'Công việc',
+  TaskDetail: 'Nội dung công việc',
+  ProjectAnalytics: 'Thống kê dự án',
+  ProjectSprint: 'Giai đoạn dự án',
 }
 </script>
 

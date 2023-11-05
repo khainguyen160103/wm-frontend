@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import moment from 'moment'
+import { useProjectStore } from '~/store/project'
+
 definePageMeta({
   layout: 'project',
   middleware: ['project'],
@@ -9,34 +12,39 @@ useHead({
   title: 'Giai đoạn dự án',
 })
 
-const sprints = []
+const projectStore = useProjectStore()
+
+const sprints = projectStore?.project?.sprints || []
+
+const formatDate = (date: string) => {
+  return moment(date).format('DD/MM/YYYY')
+}
 </script>
 
 <template>
   <div class="page-project-sprint">
-    <q-timeline color="secondary" class="px-4">
-      <q-timeline-entry heading class="text-lg font-semibold flex justify-between mb-4">
-        <span>Giai đoạn dự án</span>
-        <q-btn color="primary">Tạo giai đoạn</q-btn>
-      </q-timeline-entry>
+    <div class="text-lg font-semibold flex justify-end mb-4">
+      <q-btn color="primary">Tạo giai đoạn</q-btn>
+    </div>
 
-      <GlobalEmpty v-if="!sprints.length" />
-
-      <div v-else>
-        <q-timeline-entry>
-          <template v-slot:title>Event Title</template>
-          <template v-slot:subtitle>February 22, 1986</template>
+    <q-timeline color="secondary" class="px-4" v-if="sprints.length">
+      <div class="w-full">
+        <q-timeline-entry v-for="sprint in sprints" :key="sprint.id">
+          <template v-slot:title>{{ sprint.name }}</template>
+          <template v-slot:subtitle>
+            <span>Bắt đầu: {{ formatDate(sprint.start_at) }}</span>
+            <template v-if="sprint.end_at">
+              <span class="mx-2">-</span>
+              <span>Kết thúc: {{ formatDate(sprint.end_at) }}</span>
+            </template>
+          </template>
 
           <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            {{ sprint.goal }}
           </div>
         </q-timeline-entry>
 
-        <q-timeline-entry icon="eva-checkmark-outline">
+        <!-- <q-timeline-entry icon="eva-checkmark-outline">
           <template v-slot:title>Event Title</template>
           <template v-slot:subtitle>February 21, 1986</template>
 
@@ -47,9 +55,11 @@ const sprints = []
             nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
             anim id est laborum.
           </div>
-        </q-timeline-entry>
+        </q-timeline-entry> -->
       </div>
     </q-timeline>
+
+    <GlobalEmpty v-else />
   </div>
 </template>
 

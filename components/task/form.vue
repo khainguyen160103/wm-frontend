@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="form-create-task bg-white rounded-md hover:shadow-sm flex flex-col cursor-pointer">
+  <div class="form-create-task bg-white rounded-lg hover:shadow-sm flex flex-col cursor-pointer">
     <div class="mb-2 font-semibold">Tạo công việc</div>
 
     <q-form class="mb-3">
