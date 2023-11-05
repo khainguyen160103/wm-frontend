@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { IAccount } from '~/interfaces/account.interface'
+
 const { $api } = useNuxtApp()
 
 definePageMeta({
@@ -61,7 +63,7 @@ const permissions = [
 ]
 
 // data
-const accounts = ref([])
+const accounts = ref<IAccount[]>([])
 const pagination = reactive({
   page: 1,
   rowsPerPage: 20,
@@ -110,6 +112,19 @@ const fetchData = async () => {
 
   loading.value = false
 }
+
+const addAccount = (account: IAccount) => {
+  if (!account) return
+
+  const permissionId = account.permissions?.[0]?.id
+  const permission = permissions.find((p) => p.id === permissionId)
+
+  accounts.value.unshift({
+    ...account,
+    permission: permission?.name,
+  })
+  isShow.value = false
+}
 </script>
 
 <template>
@@ -143,7 +158,7 @@ const fetchData = async () => {
 
     <!-- Dialog create account -->
     <q-dialog v-model="isShow">
-      <AccountForm :is-show="isShow" />
+      <AccountForm :is-show="isShow" @create="addAccount" />
     </q-dialog>
   </div>
 </template>

@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+import api from '~/plugins/api'
+
+const { $api } = useNuxtApp()
+
+const emit = defineEmits(['create'])
+
 const permissions = [
   {
     id: 1,
@@ -25,7 +31,18 @@ const form = ref({
 })
 
 // methods
-const handleCreateAccount = () => {}
+const handleCreateAccount = async () => {
+  try {
+    const response = await $api.auth.create({
+      name: form.value.name,
+      email: form.value.email,
+    })
+
+    if (response) emit('create', response)
+  } catch (error) {
+    console.error('handleCreateAccount: ', error)
+  }
+}
 </script>
 
 <template>
@@ -35,11 +52,11 @@ const handleCreateAccount = () => {}
     <q-form class="">
       <div>
         <label>Tên người dùng</label>
-        <q-input placeholder="Tên người dùng" outlined></q-input>
+        <q-input v-model="form.name" placeholder="Tên người dùng" outlined></q-input>
       </div>
       <div>
         <label>Email</label>
-        <q-input placeholder="Email" outlined></q-input>
+        <q-input v-model="form.email" placeholder="Email" outlined></q-input>
       </div>
       <div>
         <label>Vai trò</label>
