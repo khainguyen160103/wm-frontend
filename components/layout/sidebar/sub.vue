@@ -29,13 +29,17 @@ const project = projectStore.project
     </div>
 
     <!-- Project quick info -->
-    <div v-if="isProject && project" class="p-2 hover:opacity-80 flex items-center gap-1">
-      <AccountAvatar :color="project.color" :src="project.avatar" :name="project.name" size="28" />
+    <nuxt-link
+      v-if="isProject && project"
+      class="p-2 flex items-center gap-1 rounded-md project-quick-info"
+      :to="{ name: 'ProjectInformation' }"
+    >
+      <AccountAvatar :color="project.color" :src="project.avatar" :name="project.name" :size="28" />
 
       <span>
         {{ project.name }}
       </span>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 
@@ -43,5 +47,15 @@ const project = projectStore.project
 .layout-sidebar-sub {
   background-color: var(--q-primary);
   opacity: 0.8;
+}
+
+.project-quick-info {
+  background-color: var(--q-primary-hover);
+  opacity: 1;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 </style>

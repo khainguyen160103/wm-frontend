@@ -11,7 +11,7 @@ const handleLogout = async () => {
 
 <template>
   <div class="">
-    <AccountAvatar v-if="account" :color="account.color" :src="account.avatar" :name="account.name" size="28" />
+    <AccountAvatar v-if="account" :color="account.color" :src="account.avatar" :name="account.name" :size="28" />
 
     <q-menu touch-position anchor="bottom end" transition-show="jump-down" transition-hide="jump-up">
       <q-list style="min-width: 120px">

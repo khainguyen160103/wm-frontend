@@ -7,9 +7,13 @@ export const useProjectStore = defineStore('project', {
   actions: {
     async getProject() {
       const { $api } = useNuxtApp()
+      const { currentRoute } = useRouter()
+
+      const projectId = +currentRoute.value.params.id
+      if (!projectId) return
 
       try {
-        const project = await $api.project.getById(1)
+        const project = await $api.project.getById(projectId)
 
         if (project) this.project = project
       } catch (error) {
