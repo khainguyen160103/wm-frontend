@@ -1,7 +1,11 @@
 <script lang="ts" setup>
+definePageMeta({
+  name: 'Category',
+})
+
 useHead({
-  title: "Quản lý danh mục",
-});
+  title: 'Quản lý danh mục',
+})
 </script>
 
 <template>

@@ -2,7 +2,7 @@
 const { $api } = useNuxtApp()
 
 definePageMeta({
-  name: 'ListAccount',
+  name: 'AccountList',
 })
 
 useHead({

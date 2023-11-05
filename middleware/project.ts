@@ -4,6 +4,8 @@ export default defineNuxtRouteMiddleware(async (from, to) => {
   const projectStore = useProjectStore()
   const project = projectStore.project
 
-  if (!project) await projectStore.getProject()
+  if (process.client) {
+    if (!project) await projectStore.getProject()
+  }
   return true
 })

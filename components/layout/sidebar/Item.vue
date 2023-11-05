@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
 .sidebar-item {
-  height: 48px;
+  height: 36px;
 }
 </style>
 
@@ -19,17 +19,17 @@ const { currentRoute } = useRouter()
 
 // computed
 const isActive = computed(() => {
-  return currentRoute.value.name === props.item.path
+  return currentRoute.value.name === props.item.route
 })
 </script>
 
 <template>
-  <q-item clickable v-ripple class="rounded-lg sidebar-item" :active="isActive" :to="item.path">
-    <q-item-section>
-      <div class="flex items-center gap-2 text-base">
-        <q-icon :name="item.icon"></q-icon>
-        <span>{{ item.name }}</span>
-      </div>
-    </q-item-section>
-  </q-item>
+  <nuxt-link
+    class="rounded-lg sidebar-item flex items-center gap-2 text-base hover:bg-gray-100 px-4 py-2"
+    :class="{ 'is-active bg-gray-100': isActive }"
+    :to="{ name: item.route }"
+  >
+    <q-icon :name="item.icon"></q-icon>
+    <span>{{ item.name }}</span>
+  </nuxt-link>
 </template>

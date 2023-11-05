@@ -10,28 +10,28 @@ const sidebarItems = ref([
   {
     name: 'Thông tin',
     icon: 'eva-info-outline',
-    path: 'information',
+    route: 'ProjectInformation',
   },
   {
     name: 'Công việc',
     icon: 'eva-briefcase-outline',
-    path: 'task',
+    route: 'ProjectTask',
   },
   {
     name: 'Thống kê',
     icon: 'eva-bar-chart-2-outline',
-    path: 'analytics',
+    route: 'ProjectAnalytics',
   },
   {
     name: 'Giai đoạn',
     icon: 'eva-calendar-outline',
-    path: 'sprint',
+    route: 'ProjectSprint',
   },
 ])
 </script>
 
 <template>
-  <div class="project-sidebar flex flex-col border-r p-2">
+  <div class="project-sidebar flex flex-col border-r p-2 gap-1">
     <LayoutSidebarItem v-for="sidebarItem in sidebarItems" :key="sidebarItem.name" :item="sidebarItem" />
   </div>
 </template>

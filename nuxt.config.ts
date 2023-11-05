@@ -47,6 +47,12 @@ export default defineNuxtConfig({
     extras: {
       fontIcons: ['eva-icons'],
     },
+    plugins: ['Loading'],
+    config: {
+      loading: {
+        delay: 500,
+      },
+    },
   },
 
   css: ['~/assets/style/main.scss', '~/assets/style/quasar.scss'],
