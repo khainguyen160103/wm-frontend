@@ -4,6 +4,10 @@ import { IProject } from '~/repository/project/project.interface'
 export const useProjectStore = defineStore('project', {
   state: () => ({ project: null as IProject | null }),
 
+  getters: {
+    sprint: (state) => state.project?.sprints?.[0],
+  },
+
   actions: {
     async getProject() {
       const { $api } = useNuxtApp()

@@ -1,25 +1,34 @@
 <script lang="ts" setup>
 import draggable from 'vuedraggable'
+import { ITask } from '~/repository/task'
 import { IColumn } from '../../interfaces/column.inteface'
 
+//
 const props = defineProps({
   column: {
     type: Object,
     required: true,
   },
+  isShowCreate: {
+    type: Boolean,
+    default: false,
+  },
 })
+const emit = defineEmits(['close', 'create'])
 
-const tasks = [
+const tasks = ref<ITask[]>([
   { id: 1, name: 'Task 1 for item', due_date: '2023-10-21 09:45:35.792049' },
   { id: 2, name: 'Task 1 for item', due_date: '2023-10-21 09:45:35.792049' },
   { id: 3, name: 'Task 1 for item', due_date: '2023-10-21 09:45:35.792049' },
-]
+])
 
 // data
-const isShowCreate = ref(false)
 
 // methods
-const addTask = () => {}
+const addTask = (task: ITask) => {
+  tasks.value.unshift(task)
+  emit('close')
+}
 </script>
 
 <template>
@@ -35,7 +44,7 @@ const addTask = () => {}
 
     <!-- Wrapper -->
     <div class="column__wrapper flex flex-col gap-2">
-      <TaskForm @create="addTask" v-if="column.name === 'Mới' && isShowCreate" @close="isShowCreate = false" />
+      <TaskForm @create="addTask" v-if="column.name === 'Mới' && isShowCreate" @close="emit('close')" />
 
       <draggable v-model="tasks" ghost-class="ghost" item-key="id" handle=".task-item" class="flex flex-col gap-2">
         <template #item="{ element: task }">

@@ -21,9 +21,16 @@ const columns = [...columnStore.columns]
 const value = ref(true)
 const search = ref(null)
 const refColumn = ref(null)
+const isShowCreate = ref(false)
 
 // methods
-const showCreate = () => {}
+const showCreate = () => {
+  isShowCreate.value = true
+}
+
+const closeCreate = () => {
+  isShowCreate.value = false
+}
 </script>
 
 <template>
@@ -44,7 +51,14 @@ const showCreate = () => {}
 
     <!-- Container -->
     <div class="page-project-task__container flex flex-row flex-nowrap w-full gap-4 overflow-x-auto">
-      <Column v-for="column in columns" :key="column.id" :column="column" ref="refColumn" />
+      <Column
+        v-for="column in columns"
+        :key="column.id"
+        :column="column"
+        ref="refColumn"
+        @close="closeCreate"
+        :is-show-create="isShowCreate"
+      />
     </div>
   </div>
 </template>
