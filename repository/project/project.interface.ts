@@ -9,6 +9,7 @@ export interface IProject {
   created_at?: Date | string
   updated_at?: Date | string
   sprints?: any[]
+  boards?: any[]
 }
 
 export interface ICreateProject {}

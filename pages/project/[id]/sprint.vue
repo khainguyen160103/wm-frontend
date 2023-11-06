@@ -14,7 +14,7 @@ useHead({
 
 const projectStore = useProjectStore()
 
-const sprints = projectStore?.project?.sprints || []
+const sprints = projectStore?.sprints || []
 
 const formatDate = (date: string) => {
   return moment(date).format('DD/MM/YYYY')

@@ -6,6 +6,8 @@ export const useProjectStore = defineStore('project', {
 
   getters: {
     sprint: (state) => state.project?.sprints?.[0],
+    sprints: (state) => state.project?.sprints || [],
+    boards: (state) => state.project?.boards || [],
   },
 
   actions: {
