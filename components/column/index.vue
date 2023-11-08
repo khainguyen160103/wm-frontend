@@ -38,7 +38,7 @@ const addTask = (task: ITask) => {
       <span class="font-semibold">{{ column.name }}</span>
       <div class="flex items-center gap-1">
         <q-icon name="eva-credit-card-outline" size="18px"></q-icon>
-        {{ column.tasks && column.tasks.length }}
+        {{ tasks && tasks.length }}
       </div>
     </div>
 

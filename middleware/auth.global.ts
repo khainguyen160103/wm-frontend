@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware(async (from, to) => {
   const authStore = useAuthStore()
   const columnStore = useColumnStore()
 
-  if (from.name === 'Login') return true
+  if (['Login', 'ForgotPassword'].includes(from?.name as string)) return true
 
   let account = authStore?.$state?.account
 

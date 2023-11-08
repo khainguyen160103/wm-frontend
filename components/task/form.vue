@@ -13,7 +13,11 @@ const form = ref({
 
 const handleCreateTask = async () => {
   try {
-    const task = await $api.task.create({ name: form.value.name as any, sprint_id: sprint.id })
+    const task = await $api.task.create({
+      name: form.value.name as any,
+      sprint_id: sprint.id,
+      task_in_column: { column_id: 1 },
+    })
     emit('create', task)
 
     setTimeout(() => {

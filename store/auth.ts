@@ -8,7 +8,10 @@ interface ILogin {
 }
 
 export const useAuthStore = defineStore('auth', {
-  state: () => ({ account: null as IAccount | null }),
+  state: () => ({
+    account: null as IAccount | null,
+    // token: localStorage?.getItem(TOKEN_NAME),
+  }),
 
   actions: {
     async login(account: ILogin) {
@@ -50,6 +53,7 @@ export const useAuthStore = defineStore('auth', {
   },
 
   persist: {
+    key: 'access_token',
     storage: persistedState.localStorage,
   },
 })

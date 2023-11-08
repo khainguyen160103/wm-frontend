@@ -17,4 +17,6 @@ export const useColumnStore = defineStore('column', {
       }
     },
   },
+
+  persist: true,
 })
