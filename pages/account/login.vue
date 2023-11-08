@@ -50,6 +50,10 @@ const handleLogin = async () => {
       <q-input v-model="account.password" placeholder="Mật khẩu" outlined class="mt-4" type="password"></q-input>
 
       <q-btn color="primary" label="ĐĂNG NHẬP" class="mt-4 w-full" @click="handleLogin" :loading="isLoading" />
+
+      <nuxt-link :to="{ name: 'ForgotPassword' }" class="ml-auto mt-2 text-primary-blue cursor-pointer hover:underline">
+        Quên mật khẩu?
+      </nuxt-link>
     </q-form>
   </div>
 </template>

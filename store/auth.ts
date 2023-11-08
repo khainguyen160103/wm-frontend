@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
   },
 
   persist: {
-    key: 'access_token',
+    key: 'auth',
     storage: persistedState.localStorage,
   },
 })

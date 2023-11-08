@@ -23,8 +23,10 @@ interface IApiInstance {
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
+  const { $config, $pinia } = nuxtApp
+
   const fetchOptions: FetchOptions = {
-    baseURL: nuxtApp.$config.public.API_BASE_URL as string,
+    baseURL: $config.public.API_BASE_URL as string,
     headers: {},
     onRequest: (ctx) => {
       const token = process.client ? localStorage.getItem(TOKEN_NAME) : null

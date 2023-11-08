@@ -9,22 +9,22 @@ export default defineNuxtRouteMiddleware(async (from, to) => {
 
   let account = authStore?.$state?.account
 
-  if (process.client) {
-    if (!account) {
-      // get profile
-      account = await authStore.profile()
-    }
+  if (!process.client) return true
 
-    if (!account) {
-      return navigateTo({ name: 'Login' })
-    }
+  if (!account) {
+    // get profile
+    account = await authStore.profile()
+  }
 
-    const columns = columnStore.columns
-    if (!columns.length) columnStore.getColumn()
+  if (!account) {
+    return navigateTo({ name: 'Login' })
+  }
 
-    if (from.name === 'index') {
-      return navigateTo({ name: 'ProjectList' })
-    }
+  const columns = columnStore.columns
+  if (!columns.length) columnStore.getColumn()
+
+  if (from.name === 'index') {
+    return navigateTo({ name: 'ProjectList' })
   }
 
   return true
