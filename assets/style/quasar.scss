@@ -1,0 +1,82 @@
+body {
+  --q-primary: #3396ff;
+  --q-primary-hover: #659ffd;
+  --white: #ffffff;
+}
+
+.q-form {
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 37px rgb(8 21 66 / 5%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.q-field {
+  background-color: #ffffff;
+  height: 36px;
+
+  &__control {
+    height: 36px;
+  }
+
+  &--dense {
+    height: 36px;
+  }
+}
+
+.q-btn {
+  box-shadow: none;
+  border-radius: 4px;
+
+  &::before {
+    box-shadow: none;
+  }
+
+  &.bg-primary {
+    background: var(--q-primary) !important;
+  }
+}
+
+.q-item {
+  &.q-router-link--active {
+    color: var(--q-primary);
+    background-color: var(--q-primary-hover);
+  }
+
+  &--active {
+    color: var(--q-primary);
+    background-color: var(--q-primary-hover);
+  }
+}
+
+.q-field--dense .q-field__control,
+.q-field--dense .q-field__marginal {
+  height: 36px;
+}
+
+.q-field--auto-height.q-field--dense .q-field__control,
+.q-field--auto-height.q-field--dense .q-field__native {
+  min-height: 36px;
+}
+
+.q-btn--actionable.q-btn--standard:active:before,
+.q-btn--actionable.q-btn--standard.q-btn--active:before {
+  box-shadow: none;
+}
+
+.q-timeline {
+  &__dot {
+    &.text-secondary {
+      color: var(--q-primary) !important;
+    }
+  }
+}
+
+.q-card {
+  &__section,
+  &__section--vert {
+    background-color: var(--white);
+  }
+}
